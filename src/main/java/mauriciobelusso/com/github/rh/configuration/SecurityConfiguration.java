@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                     .anyRequest().authenticated()
                     .and()
                 .formLogin().permitAll()
-                    .and() //Logout Form configuration
+                    .and()
                 .logout().permitAll()
                     .and()
                 .httpBasic(withDefaults());;
