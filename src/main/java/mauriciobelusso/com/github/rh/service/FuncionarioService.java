@@ -31,7 +31,7 @@ public class FuncionarioService {
         return funcionarioRepository.findById(id).orElse(null);
     }
 
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         funcionarioRepository.deleteById(id);
     }
 

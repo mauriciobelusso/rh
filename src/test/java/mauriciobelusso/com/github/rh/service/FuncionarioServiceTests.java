@@ -58,6 +58,7 @@ public class FuncionarioServiceTests {
         lenient().when(funcionarioRepository.findAll()).thenReturn(funcionarios);
         lenient().when(funcionarioRepository.findById(1L)).thenReturn(Optional.of(funcionarios.get(0)));
         lenient().when(funcionarioRepository.save(any(Funcionario.class))).thenReturn(funcionarios.get(0));
+        lenient().doNothing().when(funcionarioRepository).deleteById(1L);
     }
 
     @Test
@@ -112,5 +113,17 @@ public class FuncionarioServiceTests {
         assertThatThrownBy(() -> funcionarioService.save(funcionario))
                 .isInstanceOf(InvalidEmailException.class)
                 .hasMessage("Email inválido");
+    }
+
+    @Test
+    public void whenDelete_thenNotReturnFuncionario() {
+        // given
+        Long id = 1L;
+
+        // when
+        funcionarioService.deleteById(id);
+
+        // then
+        verify(funcionarioRepository, times(1)).deleteById(id);
     }
 }
