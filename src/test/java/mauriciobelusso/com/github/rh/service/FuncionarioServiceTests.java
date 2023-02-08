@@ -1,6 +1,5 @@
 package mauriciobelusso.com.github.rh.service;
 
-import mauriciobelusso.com.github.rh.exception.InvalidEmailException;
 import mauriciobelusso.com.github.rh.model.Funcionario;
 import mauriciobelusso.com.github.rh.repository.FuncionarioRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -97,22 +96,6 @@ public class FuncionarioServiceTests {
         assertThat(savedFuncionario.getSobrenome()).isEqualTo(funcionario.getSobrenome());
         assertThat(savedFuncionario.getEmail()).isEqualTo(funcionario.getEmail());
         assertThat(savedFuncionario.getNis()).isEqualTo(funcionario.getNis());
-    }
-
-    @Test
-    public void whenSaveFuncionarioWithInvalidEmail_thenThrowException() {
-        // given
-        Funcionario funcionario = Funcionario.builder()
-                .nome("João")
-                .sobrenome("Belusso")
-                .email("invalid-email")
-                .nis("123456789")
-                .build();
-
-        // then
-        assertThatThrownBy(() -> funcionarioService.save(funcionario))
-                .isInstanceOf(InvalidEmailException.class)
-                .hasMessage("Email inválido");
     }
 
     @Test

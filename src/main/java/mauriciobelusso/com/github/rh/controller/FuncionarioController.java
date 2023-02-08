@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,12 +32,12 @@ public class FuncionarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Funcionario create(@RequestBody Funcionario funcionario) {
+    public Funcionario create(@RequestBody @Valid Funcionario funcionario) {
         return funcionarioService.save(funcionario);
     }
 
     @PutMapping("/{id}")
-    public Funcionario update(@PathVariable Long id, @RequestBody Funcionario funcionario) {
+    public Funcionario update(@PathVariable Long id, @RequestBody @Valid Funcionario funcionario) {
         funcionario.setId(id);
         return funcionarioService.save(funcionario);
     }

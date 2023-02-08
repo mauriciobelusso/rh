@@ -14,6 +14,7 @@ Este projeto é um sistema de gerenciamento de funcionários, que visa não só 
 | H2 Database |        | Banco de dados em memória, para uso durante o desenvolvimento e testes                           |
 | Actuator    |        | Ferramenta para monitorar e gerenciar a saúde, métricas e outros aspectos da aplicação           |
 | Prometheus  |        | Sistema de monitoramento de métricas, para ajudar a controlar a performance e disponibilidade    |
+| Validation  |        | Ferramenta de validação de dados de entrada de aplicações web                                    |
 
 ## Pré-requisitos
 

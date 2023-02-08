@@ -1,6 +1,5 @@
 package mauriciobelusso.com.github.rh.service;
 
-import mauriciobelusso.com.github.rh.exception.InvalidEmailException;
 import mauriciobelusso.com.github.rh.model.Funcionario;
 import mauriciobelusso.com.github.rh.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ public class FuncionarioService {
     }
 
     public Funcionario save(Funcionario funcionario) {
-        validateEmail(funcionario.getEmail());
         return funcionarioRepository.save(funcionario);
     }
 
@@ -33,11 +31,5 @@ public class FuncionarioService {
 
     public void deleteById(Long id) {
         funcionarioRepository.deleteById(id);
-    }
-
-    private void validateEmail(String email) {
-        if (!email.matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")) {
-            throw new InvalidEmailException("Email inválido");
-        }
     }
 }
